@@ -1,1 +1,42 @@
-let 结构不成功变量的值为undefined
+    1,let 结构不成功变量的值为undefined
+一，
+5.3
+    1:ajax 的核心对象是 XHR 
+    2：哪个是实例的属性：_proto_
+    3: 游览器对象模型是：BOM
+    4: javascript数组归并函数有：reduce() ,reduceRight()
+    5: DOM节点类型元素节点值为：1
+    6：检测实例的类型 ：instanceof 检测变量的数据类型typeof
+    7: javascript 中函数属于Function 数据类型 
+    8: javascript 清除定时器的方法有 clearTimeout() clearinterval()
+    9: 检测实例的原型使用ifPrototypeof()函数
+    10：判断一个属性属于对象实例还是属于原型 ：hasOwnProperty()
+    11：函数：arguments 可以保存参数
+    12：javascript 如何获取当前的时间戳 ：date.now()
+    13: prototype () 可以给对象的构造函数提交新的属性或方法 (原型)
+    14： arguments () 可以在函数内部读取所有的参数 (后面添加的内容必须为数字不然报错)
+● 对象属性
+	○ Object.defineProperty()
+	○ value | configurable | writable | enumerable
+	○ 访问器属性 （get | set）
+
+二，
+ES6
+字符串
+    1,endsWith()判断数据是否在结尾
+    2，startsWith() 判断数据9是否在开头
+    3，includes() 判断数据是否存在于字符串中
+    4, repeat(数字) ；重复的次数 格式 ： "内容".repeat(次数)
+    5，padStart(数字,'内容')  在内容前面加人内容 (补全)
+    6.padEnd(数字,'内容') 在内容后边加入内容    (补全)
+    7,trimStart() 去除左边特殊符号和空格
+    8，trimEnd()  去除右边的特殊符号和空格
+    9,mathAll() 返回一个正则表达式在当前字符串的所有的匹配
+    10,Object.assign() 用于对象的合并，将源对象的所有可枚举属性封装到目标对象
+    11.es5严格模式 开启 ”use strict“
+    12，显示多出的数据 ...rest
+    13,添加字符串 Object.defineProperty()
+三，
+nginx
+配置
+    访问游览器显示目录在配置文件中加  autoindex no;
