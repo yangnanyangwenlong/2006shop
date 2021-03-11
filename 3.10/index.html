@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // console.log(Object.is('ff','ff'))
+        var a = {name:'zhangsna',age:'23'}
+        Object.defineProperty(a,'aa',{
+            value:'red',
+            enmuerable:true,
+            writable:true,
+            configurable:true
+        })
+        // console.log(a,arguments)
+        const b = {num:'1',pwd:'2'}
+        console.log(Object.assign(b,a))
+        
+        // 查看属性特征
+        console.log(Object.getOwnPropertyDescriptors(a))
+        // 数组遍历
+        // for(b in a){
+        //     console.log(b)
+        // }
+        let ccc= {a:'a',c:'g',d:"s",e:'s',cD:'w',ls:'s'}
+        for(aaa in ccc){
+            console.log(aaa)
+        }
+    </script>
+</body>
+</html>

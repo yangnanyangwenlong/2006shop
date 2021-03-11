@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <style>
+         .all {
+             width: 100%;
+             height: 1000px;
+         }
+ 
+         .all>div:first-child {
+             width: 50%;
+             height: 200px;
+             display: flex;
+             margin: 0 auto;
+             justify-content: space-between;
+             align-items: center;
+         }
+ 
+         .all>div:nth-child(2) {
+             display: flex;
+             justify-content: space-around;
+             align-items: center;
+             width: 100%;
+             height: 1000px;
+         }
+ 
+         .all>div:nth-child(3) {
+             width: 100%;
+             height: 400px;
+             /* display: flex;
+             align-items: center;
+             justify-content: center; */
+         }
+ 
+         #star {
+             width: 100px;
+             height: 100px;
+             background: red;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+ 
+         #play1 {
+             width: 250px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+ 
+         #play1>:last-child {
+             width: 110px;
+         }
+ 
+         #play2 {
+             width: 250px;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+         }
+ 
+         #play2>:first-child {
+             width: 110px;
+         }
+ 
+         #play3 {
+             height: 310px;
+         }
+ 
+         #play3>:last-child {
+             height: 110px;
+             width: 100%;
+             display: flex;
+             justify-content: center;
+ 
+         }
+ 
+         #wanjia3 {
+             width: 100%;
+             display: flex;
+             justify-content: center;
+         }
+ 
+         #play1>div:first-child {
+             width: 100px;
+             height: 100px;
+             border: 1px solid red;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+ 
+         #play2>div:last-child {
+             width: 100px;
+             height: 100px;
+             border: 1px solid red;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+ 
+         #play3>div:last-child>p {
+             width: 100px;
+             height: 100px;
+             border: 1px solid red;
+             border-radius: 50%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+     </style>
+ </head>
+ 
+ <body>
+     <div class="all">
+         <div id="play">
+ 
+         </div>
+         <div>
+             <div id="play1">
+                 <div>玩家一</div>
+                 <div id="wanjia1">
+ 
+ 
+                 </div>
+             </div>
+             <div id="star">
+                 <input type="button" value="开始">
+             </div>
+             <div id="play2">
+                 <div id="wanjia2">
+ 
+                 </div>
+                 <div>玩家二</div>
+             </div>
+         </div>
+ 
+         <div id="play3">
+             <div id="wanjia3">
+ 
+             </div>
+             <div>
+                 <p>玩家三</p>
+             </div>
+         </div>
+ 
+     </div>
+ 
+ 
+ 
+     <script>
+         let play = document.getElementById('play');
+         let play1 = document.getElementById('wanjia1');
+         let play2 = document.getElementById('wanjia2');
+         let play3 = document.getElementById('wanjia3');
+         let star = document.getElementById('star');
+         let arr = [];//创建数组
+         for (let i = 3; i < 18; i++) {
+             console.log(i)
+             if (i < 16) {
+                 for (let j = 1; j < 5; j++) {
+                     arr.push(`./images/${i}_${j}.jpg`);//吧图片放入数组中
+                 }
+             } else {
+                 arr.push(`./images/${i}_1.jpg`)
+             }
+         }
+         star.onclick = function () {//开始按钮被点击时
+             for (let i = 0; i < arr.length; i++) {//遍历出数组
+                 let num = fn(0, 53);//随机数
+                 let item = arr[i];//item 空数组，将arr[i]放入
+                 arr[i] = arr[num];
+                 arr[num] = item;
+             }
+ 
+             let image1 = arr.slice(0, 17);//截取数组
+             let image2 = arr.slice(17, 34);
+             let image3 = arr.slice(34, 51);
+             let image4 = arr.slice(51, 54);
+            //  console.log(image1)
+             image1.sort(paixu);
+             image2.sort(paixu);
+             image3.sort(paixu);
+             image4.sort(paixu);
+             play1.innerHTML = '';//清空
+             for (let a of image1) {
+                 play1.innerHTML += `<img src="${a}" alt="">`//添加数组
+                 play1.lastElementChild.style.marginTop = '-110px'
+             }
+             play2.innerHTML = '';
+             for (let a1 of image2) {
+                 play2.innerHTML += `<img src="${a1}" alt="">`
+                 play2.lastElementChild.style.marginTop = '-110px'
+             }
+             play3.innerHTML = '';
+             for (let a2 of image3) {
+                 play3.innerHTML += `<img src="${a2}" alt="">`
+                 play3.lastElementChild.style.marginLeft = '-70px'
+             }
+             play.innerHTML = '';
+             for (let a3 of image4) {
+                 play.innerHTML += `<img src="${a3}" alt="">`
+             }
+ 
+         }
+ 
+         function paixu(al, bl) {
+             let ra = al.slice(9, al.lastIndexOf('.'));
+             let rb = bl.slice(9, bl.lastIndexOf('.'));
+ 
+             let arr1 = ra.split('_');
+             let arr2 = rb.split('_');
+             // console.log(arr1, arr2)
+             if (parseInt(arr1[0]) < parseInt(arr2[0])) {
+                 return 1;
+             } else if (parseInt(arr1[0]) > parseInt(arr2[0])) {
+                 return -1;
+             }else{
+                 if(arr1[1]<arr2[1]){
+                     return 1;
+                 }else if(arr1[1]>arr2[1]){
+                     return -1;
+                 }else{
+                     return 0;
+                 }
+             }
+ 
+         }
+ 
+ 
+             //随机数函数
+         function fn(min, max) {
+             if (!max) {//当max没有值时
+                 max = min;
+                 min = 0;
+             }
+             return parseInt(Math.random() * (max - min + 1) + min);
+         }
+ 
+     </script>
+ </body>
+ 
+ </html>
